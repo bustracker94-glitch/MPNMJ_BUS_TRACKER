@@ -14,6 +14,11 @@ app.get('/', (req, res) => {
     res.send("Bus Tracker Backend Ready");
 });
 
+// API Root Route
+app.get('/api/v1', (req, res) => {
+    res.json({ status: 'API v1 running', version: '1.0.0' });
+});
+
 // Supabase Client
 const supabaseUrl = process.env.SUPABASE_URL;
 const supabaseKey = process.env.SUPABASE_SERVICE_KEY;
