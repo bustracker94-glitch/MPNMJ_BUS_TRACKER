@@ -9,6 +9,11 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// Root Route for Vercel Verification
+app.get('/', (req, res) => {
+    res.send("Bus Tracker Backend Ready");
+});
+
 // Supabase Client
 const supabaseUrl = process.env.SUPABASE_URL;
 const supabaseKey = process.env.SUPABASE_SERVICE_KEY;
