@@ -186,6 +186,14 @@ app.delete('/api/v1/route_stops', async (req, res) => {
 
 
 // --- 4. HARDWARE LOCATION UPDATE ---
+// Friendly message for GET requests (Browser checks)
+app.get('/api/v1/bus/location', (req, res) => {
+    res.status(405).json({
+        message: "Method Not Allowed. Please send a POST request with GPS data.",
+        example_body: { bus_id: "bus-01", latitude: 12.0, longitude: 77.0, speed: 40 }
+    });
+});
+
 app.post('/api/v1/bus/location', async (req, res) => {
     const authHeader = req.headers.authorization;
     if (!authHeader || authHeader !== `Bearer ${process.env.BUS_SECRET}`) {
